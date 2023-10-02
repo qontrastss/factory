@@ -68,6 +68,8 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = 'factory.urls'
 
+TOKEN_EXPIRED_AFTER_SECONDS = 86400
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

@@ -46,7 +46,7 @@ class SendMessageView(generics.GenericAPIView):
         if not telegram_user:
             return Response({'detail': 'Telegram account is not connected, please connect it'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # bot.send_message(telegram_user.chat_id, text)
+        bot.send_message(telegram_user.chat_id, text)
         print(text)
         Message.objects.create(telegram=telegram_user, text=text)
         return Response(status=status.HTTP_201_CREATED)

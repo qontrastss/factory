@@ -17,7 +17,7 @@ RUN pip install -r requirements.txt
 COPY . /app/
 
 # Expose the port your DRF application runs on (e.g., 8000)
-EXPOSE 8000
+EXPOSE 80
 
 # Define the command to start the application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]

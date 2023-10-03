@@ -5,5 +5,4 @@ import telebot
 
 load_dotenv()
 
-token = os.environ.get('TELEGRAM_BOT_TOKEN')
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot(os.environ.get('TELEGRAM_BOT_TOKEN'))

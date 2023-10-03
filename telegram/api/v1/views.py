@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from telegram.api.v1.serializers import MessageSerializer, MessageBodySerializer
-from telegram.bot import bot
+from telegram import bot
 from telegram.bot_handler import handle_message
 from telegram.models import TelegramUserConnectTry, TelegramUser, Message
 
@@ -25,7 +25,7 @@ def get_telegram_message(request):
     if message == '/start':  # restarts bot and we should clean all data
         TelegramUserConnectTry.objects.filter(chat_id=chat_id).delete()
         TelegramUser.objects.filter(chat_id=chat_id).delete()
-        bot.send_message(chat_id, "Введите логин:")
+        bot.bot.send_message(chat_id, "Введите логин:")
     else:
         handle_message(message=message, chat_id=chat_id)
 
@@ -46,7 +46,7 @@ class SendMessageView(generics.GenericAPIView):
         if not telegram_user:
             return Response({'detail': 'Telegram account is not connected, please connect it'}, status=status.HTTP_400_BAD_REQUEST)
 
-        bot.send_message(telegram_user.chat_id, text)
+        bot.bot.send_message(telegram_user.chat_id, text)
         print(text)
         Message.objects.create(telegram=telegram_user, text=text)
         return Response(status=status.HTTP_201_CREATED)

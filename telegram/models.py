@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class TelegramUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=False, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=False)
     chat_id = models.CharField(max_length=20, null=True, blank=True, verbose_name="ID чата с ботом")
     is_active = models.BooleanField(default=True)
 

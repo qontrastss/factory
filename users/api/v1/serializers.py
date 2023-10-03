@@ -31,6 +31,12 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return user
 
 
+class UserRegistrationResponseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name')
+
+
 class UserAuthSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=150)
     password = serializers.CharField(write_only=True)

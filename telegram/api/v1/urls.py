@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.get_telegram_message),
+    path('', views.GetTelegramMessageView.as_view()),
     path('send/', views.SendMessageView.as_view()),
     path('messages/', views.GetMessagesView.as_view()),
 ]

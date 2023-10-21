@@ -1,16 +1,40 @@
 # Factory project
 
+This repository contains a Django project with Celery and Redis integrated, all managed and deployed with Docker Compose. Follow these steps to quickly set up and run the project.
+
+## Prerequisites
+
+Ensure you have the following software installed on your system:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+## Getting Started
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone <repository_url>
+   cd factory
+
+2. Create a .env file and configure your environment variables. You can use the provided .env.example as a template.
+   ```bash
+    cp .env.example .env
+
+4. Run Django app
+     ```bash
+     python manage.py runserver
+5. Run Celery worker
+     ```bash
+      celery -A factory worker -l INFO
+
+6. Or by build and start the Docker containers using Docker Compose:
+     ```bash
+    docker-compose up -d
+
 ## Features
 
-- **Ready to be deployed on VPS** - Contains all the packages and configurations for deploying the project to VPS. (Production deployed in https://galiash.site/)
-
-- **Connected with telegram bot** - Developed [telegram bot](https://t.me/factory_aslan_bot) which can connect with account.
-
-- **Swagger Schema Generator** - [Schema](https://galiash.site/swagger/) uses drf-yasg library for generating Swagger Schema.
-
--  **CORS** - Preconfigured CORS to allow all hosts. Can be changed in the `settings.py`.
-
--  **SSL Certificate/HTTPS** - Have gotten SSL Certificate in order to work with HTTPS protocol.
+- **Swagger Schema Generator** - Schema uses drf-yasg library for generating Swagger Schema.And can be accessed by /swagger route
 
 - **Token Auth** - Configured Django Rest Framework for Token Authentication System.
   
